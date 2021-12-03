@@ -1,6 +1,4 @@
-depth = 0
-pos = 0
-aim = 0
+depth = pos = aim = 0
 
 with open('input.txt') as fin:
     for l in fin:
