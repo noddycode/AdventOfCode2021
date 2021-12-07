@@ -18,14 +18,14 @@ def get_lowest(test_target, previous_best):
         sum = 0
         for crab in crab_list:
             dist = abs(crab - test_point)
-            sum += (dist * (dist + 1))/2
+            sum += (dist * (dist + 1))/2 # (n(n+1))/2
         results.append(sum)
 
-    if previous_best < min(results):
+    if previous_best < min(results):  # Nothing on either side of our goal is better than what we had
         print(int(previous_best))
     else:
-        get_lowest(test_points[results.index(min(results))], min(results))
+        get_lowest(test_points[results.index(min(results))], min(results))  # Convoluted way of returning the index of the lowest value test target
 
 
-
+# Starting with our best guess: the median of all values
 get_lowest(statistics.median(crab_list), float('inf'))
