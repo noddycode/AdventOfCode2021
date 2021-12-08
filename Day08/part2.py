@@ -1,7 +1,5 @@
 from collections import defaultdict
 
-unique_segment_lengths = {2, 4, 3, 7}
-
 def get_unique(inputs):
     return {
         1: set([x for x in inputs if len(x) == 2][0]),
@@ -10,10 +8,7 @@ def get_unique(inputs):
         8: set([x for x in inputs if len(x) == 7][0]),
     }
 
-def get_num_occurrences(inputs, include_unique = True):
-    if not include_unique:
-        inputs = {x for x in inputs if len(x) not in unique_segment_lengths}
-
+def get_num_occurrences(inputs):
     res_dict = defaultdict(int)
     for input in inputs:
         for letter in input:
@@ -98,20 +93,10 @@ print(total_sum)
 # f: 0, 1, 3, 4, 5, 6, 7, 8, 9
 # g: 0, 2, 3, 5, 6, 8, 9
 
-# And without the unique segmented numbers
-# a: 0, 2, 3, 5, 6, 9
-# b: 0, 5, 6, 9
-# c: 0, 2, 3, 9
-# d: 2, 3, 5, 6, 9
-# e: 0, 2, 6
-# f: 0, 3, 5, 6, 9
-# g: 0, 2, 3, 5, 6, 9
-
 # Segment A: Find 1 and 7, whichever segment is in 7 and not 1 is A
-# Segment A alt: Remove 1, 4, 7, and 8: Whichever segment is in exactly 6 digits is A
 # Segment F: Find the only common segment between exactly 9 of the digits
 # Segment E: Find the only common segment between exactly 4 of the digits
 # Segment B: Find the only common segment between exactly 6 of the digits
 # Segment C: Find 1, whichever segment is not F from above is C
 # Segment D: Find 4, whichever segment that is not mapped to C, B, or F is D
-# Segment G:Whatever remains
+# Segment G: Whatever remains
