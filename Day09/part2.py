@@ -1,3 +1,5 @@
+import math
+
 map_width = 0
 map_height = 0
 map_list = []
@@ -45,5 +47,5 @@ for i in range(len(map_list)):
         basins.append(basin)
 
 biggest_basins = sorted(basins, key=lambda x: len(x), reverse=True)[:3]
-print(len(biggest_basins[0]) * len(biggest_basins[1]) * len(biggest_basins[2]))
+print(math.prod(len(b) for b in biggest_basins))
 
