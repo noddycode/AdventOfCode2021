@@ -1,9 +1,9 @@
 from collections import deque
 
-right_chars = "([{<"
-left_chars = ")]}>"
+left_chars = "([{<"
+right_chars = ")]}>"
 
-char_dict = {r: l for r, l in zip(right_chars, left_chars)}
+char_dict = {r: l for r, l in zip(left_chars, right_chars)}
 
 illegal_chars = []
 
@@ -12,7 +12,7 @@ with open("input.txt") as fin:
         l = l.strip()
         char_stack = deque()
         for char in l:
-            if char in right_chars:
+            if char in left_chars:
                 char_stack.append(char)
             else:
                 chunk_start = char_stack.pop()
